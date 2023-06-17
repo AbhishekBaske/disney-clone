@@ -1,14 +1,16 @@
 import { styled } from "styled-components";
-import { auth, provider } from "../firebase";
+import {authInstance, provider} from "../firebase";
 
 const Header = (props) => {
-    const handleAuth = () => {
-        auth.signInWithPopup(provider).then((result) => {
-            console.log(result)
-        }).catch((error) => {
-            alert(error.message)
-        })
-    }
+    const handleAuth = async () => {
+        try {
+            const result = await authInstance.signInWithPopup(provider);
+            console.log(result);
+        } catch (error) {
+            alert(error.message);
+        }
+    };
+
     return <Nav>
         <Logo>
             <img src="./images/logo.svg" alt=" " />
