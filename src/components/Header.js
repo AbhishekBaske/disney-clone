@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { styled } from "styled-components";
 import { authInstance, provider } from "../firebase";
 import { signInWithPopup } from "firebase/auth"
@@ -35,6 +36,14 @@ const Header = (props) => {
             })
         )
     }
+    useEffect(() => {
+        authInstance.onAuthStateChanged(async (user) => {
+            if (user) {
+                setUser(user)
+                history.push("./home")
+            }
+        })
+    },[userName])
     return <Nav>
         <Logo>
             <img src="./images/logo.svg" alt=" " />
