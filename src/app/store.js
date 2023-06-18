@@ -1,14 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
-import  userSlice from "../features/userSlice"
-
-export default configureStore({
+import { configureStore} from "@reduxjs/toolkit";
+import  userReducer from "../features/userSlice"
+const store = configureStore({
     reducer: {
-        user: userSlice
-    },
-    middleware: (getDefaultMiddleware) => {
-        getDefaultMiddleware({
-            serializableCheck: false,
-        })
+        user: userReducer
     }
 })
 
+export default store
