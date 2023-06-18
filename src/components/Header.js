@@ -8,7 +8,7 @@ import { selectUserName, selectUserPhoto, setUserLoginDetails } from "../feature
 
 const Header = (props) => {
     const dispatch = useDispatch()
-    const history = useNavigate()
+    const navigate = useNavigate()
     const userName = useSelector(selectUserName)
     const userPhoto = useSelector(selectUserPhoto)
 
@@ -40,7 +40,7 @@ const Header = (props) => {
         authInstance.onAuthStateChanged(async (user) => {
             if (user) {
                 setUser(user)
-                history.push("./home")
+                navigate("./home")
             }
         })
     },[userName])
